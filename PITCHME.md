@@ -108,9 +108,27 @@ fragment userFragment on User{
 ```
 
 ---
-@title[Building an API]
-## Building an API
-Many languages and libraries : Node.js, Java, Python, Clojure, Go, ...
+@title[GraphiQL]
+## GraphiQL
+![GraphiQL](assets/img/graphiql.png)
+
+---
+@title[App]
+## Let's build our App !
+It's a simple three-tiers architecture
+![Archi](assets/img/archi.png)
+
+---
+@title[Client]
+## Querying from client
+Multiple client libs in Javascript, Java, Python...
+
+Can go from a simple `fetch` wrapper to a full framework (Relay)
+
+---
+@title[Server]
+## Building a Server API
+Multiple languages and server libraries : Node.js, Java, Python, Clojure, Go, ...
 
 We'll focus on Node.js
 
@@ -175,6 +193,13 @@ type Query {
 
 ---
 @title[Resolvers]
+## Resolvers
+But where do the results come from ?
+
+Asynchronous resolver functions
+
+---
+@title[Root resolver]
 ## Root resolver (using Sequelize)
 ```javascript
 var root = {
