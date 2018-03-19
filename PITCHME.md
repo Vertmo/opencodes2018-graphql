@@ -27,7 +27,7 @@ query {
 ```
 
 ---
-@title[Response]
+@title[Query response]
 ## ... and its response
 ```
 {
@@ -37,6 +37,126 @@ query {
       "isCampusExpert": true
     }
   }
+}
+```
+
+---
+@title[Mutation]
+## Changing data ...
+```
+mutation {
+  addReaction(input:{subjectId:"MDU6SXNzdWUyMTg2NjA4OTQ=", content:THUMBS_UP}) {
+    reaction {
+      id
+      content
+    }
+  }
+}
+```
+
+---
+@title[Mutation response]
+## ... also yields a response
+```
+{
+  "data": {
+    "addReaction": {
+      "reaction": {
+        "id": "MDg6UmVhY3Rpb24yMTA0MDU5Mw==",
+        "content": "THUMBS_UP"
+      }
+    }
+  }
+}
+```
+
+---
+@title[Building an API]
+## Building an API
+Many languages and libraries : Node.js, Java, Python, Clojure, Go, ...
+
+We'll focus on Node.js
+
+---
+@title[Entry Point]
+## Using the express framework
+```javascript
+var app = express()
+
+app.use('/graphql', graphqlHTTP({
+  schema: schema,
+  rootValue: root,
+  graphiql: true,
+}))
+```
+
+---
+@title[Schema]
+## GraphQL schema syntax
+```javascript
+var schema = buildSchema(`
+    type Query {...}
+    type Mutation {...}
+    ...
+`)
+```
+
+---
+@title[Types]
+## Types
+* Scalar types : Int, Float, String, Boolean, ID. You can define a new scalar
+* Lists
+* Object types : user-defined
+
+---
+@title[User]
+## User type
+```
+"A User of the app"
+type User {
+    id: ID
+    username: String
+    name: String
+    surname: String
+    fullname: String
+    role: Role
+},
+```
+
+@title[User Query]
+## User Query
+```
+type Query {
+    "A single user by it's id"
+    user(id: ID!): User
+}
+```
+
+---
+@title[Resolvers]
+## Root resolver (using Sequelize)
+```javascript
+var root = {
+    user: (args) => UserDB.findById(args.id).then(user => new User(user))
+}
+```
+
+---
+@title[User class]
+## User class (and it's internal resolvers)
+```javascript
+class User {
+    constructor(data) {
+        this.id = data.id
+        this.username = data.username
+        this.name = data.name
+        this.surname = data.surname
+        this.roleID = data.roleId
+    }
+
+    fullname() { return this.surname + this.name }
+
+    role() { return ... }
 }
 ```
 
