@@ -9,7 +9,7 @@
 Querying language developped by Facebook since 2012 and published in 2015. Alternative to REST APIs.
 
 ---
-@title[Difference ?]
+@title[REST vs GraphQL]
 ## I know REST, what's the difference ?
 * Like REST, GraphQL is structured
 * In REST, you query different endpoints : `/users/<username>` to get ALL the information about ONE user, `/users/<username>/repos` to get ALL the repositories of ONE user 
@@ -46,8 +46,8 @@ query {
 ## Changing data ...
 ```
 mutation {
-    addReaction(input: {
-        subjectId:"MDU6SXNzdWUyMTg2NjA4OTQ=", 
+  addReaction(input: {
+    subjectId:"MDU6SXNzdWUyMTg2NjA4OTQ=", 
         content:THUMBS\_UP
     }) {
     reaction {
@@ -71,6 +71,39 @@ mutation {
       }
     }
   }
+}
+```
+
+---
+@title[Aliases]
+## Aliases
+```
+query {
+  firstUser: user(login:"vertmo") {
+    name
+  }
+  secondUser: user(login:"joenash") {
+    name
+  }
+}
+```
+
+---
+@title[Fragments]
+## Fragments = Macros
+```
+query {
+  firstUser: user(login:"vertmo") {
+    ...userFragment
+  }
+  secondUser: user(login:"joenash") {
+    ...userFragment
+  }
+}
+
+fragment userFragment on User{
+  name
+  isCampusExpert
 }
 ```
 
@@ -127,6 +160,7 @@ type User {
 },
 ```
 
+---
 @title[User Query]
 ## User Query
 ```
