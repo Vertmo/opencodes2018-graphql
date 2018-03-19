@@ -125,6 +125,8 @@ app.use('/graphql', graphqlHTTP({
   rootValue: root,
   graphiql: true,
 }))
+
+app.listen(4000, () => console.log('GraphQL server running'))
 ```
 
 ---
@@ -211,7 +213,7 @@ type Mutation {
         surname: String, role: RoleInput!): User
 }
 ```
-In the resolvers (simplified)
+In the resolvers
 ```javascript
 newUser: (args) => RoleDB.findOne({where: {name: args.role.name}})
     .then(r => UserDB.findOrCreate({
