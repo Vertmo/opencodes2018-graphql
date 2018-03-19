@@ -142,7 +142,8 @@ var schema = buildSchema(`
 @title[Types]
 ## Types
 * Scalar types : Int, Float, String, Boolean, ID. You can define a new scalar
-* Lists
+* Lists : []
+* Enum types : `enum Day {MONDAY TUESDAY WEDNESDAY}`
 * Object types : user-defined
 
 ---
@@ -196,6 +197,44 @@ class User {
     fullname() { return this.surname + this.name }
 
     role() { return ... }
+}
+```
+
+---
+@title[Mutation]
+## User mutation
+In the schema
+```
+type Mutation {
+    "Create a user"
+    newUser(username: String!, password: String!, name: String,
+        surname: String, role: RoleInput!): User
+}
+```
+In the resolvers (simplified)
+```javascript
+newUser: (args) => RoleDB.findOne({where: {name: args.role.name}})
+    .then(r => UserDB.findOrCreate({
+        where:{username:args.username}, 
+        defaults:{username:args.username, password:args.password,
+            name:args.name, surname:args.surname, roleId:r.id}
+}).then(data => new User(data[0])))
+```
+
+---
+@title[Input type]
+## RoleInput is an input type
+Role :
+```
+type Role {
+    id: ID,
+    name: String
+}
+```
+RoleInput :
+```
+input RoleInput {
+    name: String!
 }
 ```
 
