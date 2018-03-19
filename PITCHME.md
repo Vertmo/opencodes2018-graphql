@@ -1,5 +1,6 @@
 @title[Introduction]
 ## GraphQL is cool
+![GraphQL Logo](assets/img/graphql-logo.png)
 #### An introduction to your new query language
 
 ---
@@ -45,7 +46,10 @@ query {
 ## Changing data ...
 ```
 mutation {
-  addReaction(input:{subjectId:"MDU6SXNzdWUyMTg2NjA4OTQ=", content:THUMBS_UP}) {
+    addReaction(input: {
+        subjectId:"MDU6SXNzdWUyMTg2NjA4OTQ=", 
+        content:THUMBS\_UP
+    }) {
     reaction {
       id
       content
@@ -137,7 +141,8 @@ type Query {
 ## Root resolver (using Sequelize)
 ```javascript
 var root = {
-    user: (args) => UserDB.findById(args.id).then(user => new User(user))
+    user: (args) => UserDB.findById(args.id)
+        .then(user => new User(user))
 }
 ```
 
