@@ -1,5 +1,5 @@
 @title[Introduction]
-## GraphQL is cool
+## GraphQL for the inquiring
 ![GraphQL Logo](assets/img/graphql-logo.png)
 #### An introduction to your new query language
 
@@ -13,14 +13,23 @@ Querying language developped by Facebook since 2012 and published in 2015. Alter
 ## The old way : REST
 * Query different endpoints : `/users/<username>` to get ALL the information about ONE user, `/users/<username>/repos` to get ALL the repositories of ONE user
 * Get JSON string back
+* No typing or validation whatsoever
 
 ---
 @title[GraphQL]
 ## The new way : GraphQL
 * Like REST, GraphQL is structured
 * In GraphQL, you query a single endpoint, and you get precisely what you ask for 
-* JSON string too
-* Strong typing
+* Response are JSON strings, and query are too !
+* Strongly typed
+
+---
+@title[Usage]
+## Who uses GraphQL ?
+* Facebook (obviously...)
+* GitHub (first public API)
+* Pinterest, Yelp, Twitter, The New York Times ...
+* Lots of French companies
 
 ---
 @title[Query]
@@ -171,7 +180,7 @@ var schema = buildSchema(`
 * Scalar types : Int, Float, String, Boolean, ID. You can define a new scalar
 * Lists : []
 * Enum types : `enum Day {MONDAY TUESDAY WEDNESDAY}`
-* Object types : user-defined
+* Object types : user-defined (query and mutation are also object types)
 
 ---
 @title[User]
