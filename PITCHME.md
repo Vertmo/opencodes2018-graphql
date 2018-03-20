@@ -9,11 +9,18 @@
 Querying language developped by Facebook since 2012 and published in 2015. Alternative to REST APIs.
 
 ---
-@title[REST vs GraphQL]
-## I know REST, what's the difference ?
+@title[REST]
+## The old way : REST
+* Query different endpoints : `/users/<username>` to get ALL the information about ONE user, `/users/<username>/repos` to get ALL the repositories of ONE user
+* Get JSON string back
+
+---
+@title[GraphQL]
+## The new way : GraphQL
 * Like REST, GraphQL is structured
-* In REST, you query different endpoints : `/users/<username>` to get ALL the information about ONE user, `/users/<username>/repos` to get ALL the repositories of ONE user 
-* In GraphQL, you query a single endpoint, and you get precisely what you ask for
+* In GraphQL, you query a single endpoint, and you get precisely what you ask for 
+* JSON string too
+* Strong typing
 
 ---
 @title[Query]
