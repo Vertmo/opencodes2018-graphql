@@ -4,6 +4,15 @@
 #### An introduction to your new query language
 
 ---
+@title[About me]
+## whoami
+**Basile Pesin**, Computer Science Student at Sorbonne Université (Paris), and GitHub Campus Expert
+
+@fa[github] [https://github.com/Vertmo](https://github.com/Vertmo)
+
+@fa[twitter] [https://twitter.com/Vertmo](https://twitter.com/Vertmo)
+
+---
 @title[What is it ?]
 ## What is GraphQL ?
 Querying language developped by Facebook since 2012 and published in 2015. Alternative to REST APIs.
