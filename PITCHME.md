@@ -133,6 +133,11 @@ fragment userFragment on User{
 ```
 
 ---
+@title[GraphQL Explorer]
+## Try the GitHub API Explorer !
+[https://developer.github.com/v4/explorer/](https://developer.github.com/v4/explorer/)
+
+---
 @title[GraphiQL]
 ## GraphiQL
 ![GraphiQL](assets/img/graphiql.png)
@@ -291,6 +296,7 @@ input RoleInput {
 ```
 
 ---
-@title[GraphQL Explorer]
-## Try it out !
-[GitHub Graphql Explorer](https://developer.github.com/v4/explorer/)
+@title[Resources]
+## Resources
+* [http://graphql.org/](http://graphql.org/)
+* [https://developer.github.com/v4/](https://developer.github.com/v4/)
