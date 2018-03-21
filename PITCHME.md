@@ -115,7 +115,7 @@ query {
 
 ---
 @title[Fragments]
-## Fragments = Macros
+## Fragments
 ```
 query {
   firstUser: user(login:"vertmo") {
@@ -129,6 +129,27 @@ query {
 fragment userFragment on User{
   name
   isCampusExpert
+}
+```
+
+---
+@title[Variables]
+## Variables
+Query with parameters :
+```
+query InformationsAboutUser($login:String!) {
+  user(login:$login) {
+    avatarUrl
+    name
+    isCampusExpert
+  }
+}
+```
+
+Variables :
+```
+{
+  "login": "Vertmo"
 }
 ```
 
