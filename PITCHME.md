@@ -317,7 +317,14 @@ input RoleInput {
 ```
 
 ---
+@title[Further]
+## Going further
+* GraphQL support introspection (using `__`)
+* Authorization (use jwt for auth, and keep user data in the `context` variables)
+
+---
 @title[Resources]
 ## Resources
 * [http://graphql.org/](http://graphql.org/)
 * [https://developer.github.com/v4/](https://developer.github.com/v4/)
+* [https://github.com/chentsulin/awesome-graphql](https://github.com/chentsulin/awesome-graphql)
