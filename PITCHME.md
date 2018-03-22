@@ -18,6 +18,11 @@
 Querying language developped by Facebook since 2012 and published in 2015. Alternative to REST APIs.
 
 ---
+@title[Three-tier]
+## Three tier architecture
+![Three tier](assets/img/three-tier.png)
+
+---
 @title[REST]
 ## The old way : REST
 * Query different endpoints : `/users/<username>` to get ALL the information about ONE user, `/users/<username>/repos` to get ALL the repositories of ONE user
