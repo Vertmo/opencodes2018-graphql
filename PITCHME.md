@@ -34,7 +34,7 @@ Querying language developped by Facebook since 2012 and published in 2015. Alter
 ## The new way : GraphQL
 * Like REST, GraphQL is structured
 * In GraphQL, you query a single endpoint, and you get precisely what you ask for 
-* Response are JSON strings, and query are too !
+* Responses are JSON strings, and queries are too !
 * Strongly typed
 
 ---
@@ -242,8 +242,8 @@ type User {
 ## User Query
 ```
 type Query {
-    "A single user by it's id"
-    user(id: ID!): User
+    "A single user by their username"
+    user(username: String!): User
 }
 ```
 
@@ -252,15 +252,18 @@ type Query {
 ## Resolvers
 But where do the results come from ?
 
-Asynchronous resolver functions
+(Asynchronous) resolver functions
 
 ---
 @title[Root resolver]
 ## Root resolver (using Sequelize)
 ```javascript
 var root = {
-    user: (args) => UserDB.findById(args.id)
-        .then(user => new User(user))
+    user: (args) => UserDB.findOne({
+        where: {
+            username: args.username
+        }
+    }).then((user => user ? new User(user) : null)
 }
 ```
 
